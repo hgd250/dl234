@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="marketUser">
+	<select id="getPasswordByUserName" parameterClass="java.lang.String"
+		resultClass="java.lang.String">
+		<![CDATA[
+		select password from market_user where user_name =#userName#
+		]]>
+	</select>
+	<update id="updatePasswordByUserName" parameterClass="java.util.Map">
+		UPDATE market_user
+		SET	password = #newPassWord#,
+			gmt_modify = SYSDATE()
+		WHERE
+			user_name = #userName#
+			and password=#oldPassWord#
+	</update>
+</sqlMap>

@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>海云健康管理服务平台</title>
+<link rel="shortcut icon" href="htdocs/img/my120.ico" />
+<link rel="stylesheet" type="text/css" href="htdocs/css/card-base.css"/>
+<link rel="stylesheet" type="text/css" href="htdocs/css/card-content.css" />
+<script type="text/javascript" src="script/IE6CssHack.js"></script>
+<!--[if IE 6]>
+<script src="script/DD_belatedPNG_0.0.8a.js"></script>
+<script>DD_belatedPNG.fix('*');</script>
+<script></script>
+<![endif]-->
+</head>
+
+<body>
+<div class="header">
+    <div class="logo">
+        <a href="javascript:;"><img src="htdocs/img/space.gif" alt="海云健康管理服务平台" title="海云健康管理服务平台" /></a>
+    </div>
+</div>
+<div class="nav">
+    <ul>
+       <li><a href="toCreateCard.html">发行健康卡</a></li>
+        <li><a href="toSearchCardInfoList.html">健康卡管理</a></li>
+        <li><a href="doCancelCard.html">注销健康卡</a></li>
+        <li><a href="toModifyPassword.html">修改密码</a></li>
+        <li><a href="logout.html">退出</a></li>
+    </ul>
+</div>
+<div class="content">
+    <div class="subnav"></div>
+    <div class="subContent">
+        <div class="tabs">
+            <ul>
+               <li>发行健康卡</li>
+            </ul>
+        </div>
+        <div class="cardmsg">
+	        <div class="statusbox">
+	        	 #if ($!{c}=='A0003')
+	        		<div class="failimg"></div>
+					<div class="statusmsg">
+						<p class="status txtmid">请不要重复刷新，发卡请返回到发卡页!</p>
+				 	</div>
+	        	 #elseif ($!{c}=='A0000')
+	        	 	<div class="succeedimg"></div>
+					<div class="statusmsg"> 
+			           <p class="status txtmid">发卡成功!</p>
+			           	<p>本次共计生成<strong>$!{cardTypeName}</strong><strong> $!{d} </strong>张</p>
+			           	<p><a href="downloadCard.html?gmtCreate=$!{timestamp}">导出文件</a></p>
+			        </div>
+	           	 #elseif($!{c}=='A0001')
+					<div class="failimg"></div>
+					<div class="statusmsg">
+						<p class="status txtmid">发卡失败!剩余数量不足,目前此类卡还可以发行$!{d}张</p>
+				 	</div>
+			     #elseif($!{c}=='A0002')
+					<div class="failimg"></div>
+					<div class="statusmsg">
+						<p class="status txtmid">发卡失败!发卡数量填写错误。</p>
+					</div>	
+			     #else 
+			        <div class="failimg"></div>
+					<div class="statusmsg">
+						<p class="status txtmid">发卡失败!</p>
+					</div>	
+				 #end 
+	        </div>
+       </div>
+    </div>
+</div>
+<div class="footer" id="footer">辽卫网审字[2011]第64号　ICP备11000780号 增值电信业务经营许可证辽B-2-4-20110182</div>
+</body>
+</html>

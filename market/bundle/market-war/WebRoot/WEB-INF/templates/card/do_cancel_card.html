@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>海云健康管理服务平台</title>
+<link rel="shortcut icon" href="htdocs/img/my120.ico" />
+<link rel="stylesheet" type="text/css" href="htdocs/css/card-base.css"/>
+<link rel="stylesheet" type="text/css" href="htdocs/css/card-content.css" />
+<script type="text/javascript" src="htdocs/javascript/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="htdocs/javascript/jquery.pagination.js"></script>
+<script type="text/javascript" src="htdocs/javascript/jquery.template.js"></script>
+<script type="text/javascript" src="htdocs/javascript/jquery.validator.js"></script>
+<script type="text/javascript" src="htdocs/javascript/public.page.js"></script>
+
+<script type="text/javascript" src="script/IE6CssHack.js"></script>
+<!--[if IE 6]>
+<script src="script/DD_belatedPNG_0.0.8a.js"></script>
+<script>DD_belatedPNG.fix('*');</script>
+<script></script>
+<![endif]-->
+</head>
+
+<body>
+	<div class="header">
+		<div class="logo">
+			<a href="javascript:;"><img src="htdocs/img/space.gif" alt="海云健康管理服务平台" title="海云健康管理服务平台" /></a>
+		</div>
+	</div>
+	<div class="nav">
+		<ul>
+       <li><a href="toCreateCard.html">发行健康卡</a></li>
+        <li><a href="toSearchCardInfoList.html">健康卡管理</a></li>
+        <li><a href="doCancelCard.html">注销健康卡</a></li>
+        <li><a href="toModifyPassword.html">修改密码</a></li>
+        <li><a href="logout.html">退出</a></li>
+		</ul>
+	</div>
+	<div class="content">
+		<div class="subnav"></div>
+		<div class="subContent">
+			<div class="tabs">
+				<ul>
+					<li>注销健康卡</li>
+				</ul>
+			</div>
+			<div class="cardmsg">
+				<div class="msgbox">
+					<form action="doCancelCardByExcel.html" method="post" enctype="multipart/form-data">
+						<p>
+							<label class="labelwidth">选择文件</label><input type="file" name="file" />
+						</p>
+						<p>
+							<input type="submit" class="surebtn" value="确定" />
+						</p>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer" id="footer">辽卫网审字[2011]第64号 ICP备11000780号 增值电信业务经营许可证辽B-2-4-20110182</div>
+</body>
+</html>

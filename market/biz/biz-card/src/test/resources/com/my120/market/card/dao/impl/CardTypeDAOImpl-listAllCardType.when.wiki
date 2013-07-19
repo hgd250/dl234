@@ -1,0 +1,7 @@
+|connect|
+|clean table|card_type|
+|insert|card_type|
+|ct_id|ct_name|ct_service|ct_month	|ct_price|ct_charge|ct_is_refund|ct_is_renew|ct_is_upgrade|ct_is_present|ct_intro|ct_code|
+|01|type1|1001=1,1002=3|12|99999999.99|20.00|0|0|0|0|服务内容|0101|
+|02|type2|1001=1,1002=3|12|99999999.99|20.00|0|0|0|0|服务内容|0201|
+|03|type3|1001=1,1002=3|12|99999999.99|20.00|0|0|0|0|服务内容|0301|

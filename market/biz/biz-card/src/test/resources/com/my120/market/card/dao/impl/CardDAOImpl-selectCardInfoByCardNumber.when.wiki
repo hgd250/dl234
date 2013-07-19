@@ -1,0 +1,25 @@
+|connect|
+|clean table|card_info|
+|insert|card_info|
+|cd_id|cd_number|cd_cdkey|cd_type	|cd_status|cd_start_time|cd_end_time|cd_create_userid|cd_create_ip|cd_modify_ip|cd_activated_time|cd_freezed_time|cd_destroyed_time|cd_rejected_time|gmt_create|gmt_modify|
+|96|2102000101900082|834276|1|0|null|null|null|null|null|null|null|null|null|1352882780|1352882780|
+
+|clean table|card_type|
+|insert|card_type|
+|ct_id|ct_name|ct_service|ct_month	|ct_price|ct_charge|ct_is_refund|ct_is_renew|ct_is_upgrade|ct_is_present|ct_intro|ct_code|
+|1|百元卡（500块）|1001=1,1002=3|12|99999999.99|20.00|0|0|0|0|没有内容没有内容没有内容没有内容|0101|
+
+|clean table|user|
+|insert|user|
+|u_id|u_name|u_pwd|u_lasttime|u_role|u_ip|u_registertime|u_version|u_source|u_flag|
+|27994|hzccyt0919|59313E769BB4E19AB117B07579FADDBA|1348026896358|1|192.168.0.132|1348026896358|0|0|1|1|
+
+|clean table|patient_info|
+|insert|patient_info|
+|pi_id|pi_userid|pi_name|pi_sex|pi_year|pi_location_code|pi_location_detail|pi_idnumber|pi_tel|pi_phone|pi_phone_status|pi_email|pi_email_status|pi_mail_validcode|pi_email_temp|pi_email_code_time|pi_regist_type|pi_modify_time|pi_level|pi_expect_userid|pi_source|
+|10621|27994|患者WL测试|男|1990|220421000000|村六社|220106199004081254|041187861160|15140611214|0|296784423@qq.com|0|null||null|0|1348027117823|1|null|null|
+
+|clean table|region|
+|insert|region|
+|r_id|r_province_name|r_province_code|r_city_name|r_city_code|r_district_name|r_district_code|r_town_name|r_town_code|r_village_name|r_village_code|r_name|r_code|r_level|r_flag|
+|202414|浙江省|330000000000|温州市|330300000000|永嘉县|330324000000|界坑乡|330324208000|美岙村|330324208203|美岙村|330324208203|5|1|

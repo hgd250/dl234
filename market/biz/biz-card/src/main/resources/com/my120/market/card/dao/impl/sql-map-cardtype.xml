@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="cardType">
+
+	<typeAlias alias="cardType" type="com.my120.market.model.CardTypeModel" />
+
+	<select id="listAllCardType" 	resultClass="cardType">
+		select  ct_id as id,ct_name as name,ct_service as service,ct_month as month,ct_price as price ,ct_charge as charge,ct_is_refund as refund,
+		        ct_is_renew as renew,ct_is_upgrade as upgrade,ct_is_present as present,ct_intro as intro,ct_code as	typeCode	
+		from card_type
+	</select>
+	
+	<select id="getCardTypeNameByKeyCode" parameterClass="java.lang.String"
+		resultClass="java.lang.String">
+		<![CDATA[
+		select ct_name as keyCode from card_type where ct_code=#keyCode#
+		]]>
+	</select>
+	
+</sqlMap>

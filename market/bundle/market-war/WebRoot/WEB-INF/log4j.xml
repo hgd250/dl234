@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration>  
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"> 
+	
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{MM-dd HH:mm:ss,SSS}][%X{username}][%X{userip}] %p -%c - %m%n " />
+		</layout>
+	</appender>
+	
+	<appender name="allLOG" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="Append" value="true" />    
+        <param name="Threshold" value="debug" />  
+        <param name="File" value="${webappkey.market}/WEB-INF/logs/all.log" />   
+        <param name="DatePattern" value="'.'yyyy-MM-dd-HH'.log'"/>
+        <layout class="org.apache.log4j.PatternLayout">   
+            <param name="ConversionPattern" value="[%d{MM-dd HH:mm:ss SSS}][%X{username}][%X{userip}] %p -%c - %m%n " />   
+        </layout>
+	</appender>
+	
+	<appender name="operationLog" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="Append" value="true" />    
+        <param name="Threshold" value="debug" />  
+        <param name="File" value="${webappkey.market}/WEB-INF/logs/operationLog.log" />   
+        <param name="DatePattern" value="'.'yyyy-MM-dd-HH'.log'"/>
+        <layout class="org.apache.log4j.PatternLayout">   
+            <param name="ConversionPattern" value="[%d{MM-dd HH:mm:ss SSS}] %p -{ip:'%X{userip}',userid:'%X{userid}',username:'%X{username}',name:'%X{name}',%m,frompage:'%X{frompage}',currentpage:'%X{currentpage}'}%n" />   
+        </layout>
+	</appender>
+
+	<logger name="operationLog" additivity="true">
+		<level value="debug" />
+		<appender-ref ref="operationLog"/>
+	</logger>	
+		
+	<root>
+		<level value="info" />
+		<appender-ref ref="console"/>
+		<appender-ref ref="allLOG"/>
+	</root>
+	
+</log4j:configuration>

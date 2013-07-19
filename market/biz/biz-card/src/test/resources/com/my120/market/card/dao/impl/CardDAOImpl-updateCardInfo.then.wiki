@@ -1,0 +1,4 @@
+|connect|
+|query|select cd_id,cd_number,cd_cdkey,cd_type,cd_status,cd_start_time,cd_end_time,cd_create_userid,cd_create_ip,cd_modify_ip,cd_activated_time,cd_freezed_time,cd_destroyed_time,cd_rejected_time,gmt_create,gmt_modify from card_info|
+|cd_id|cd_number|cd_cdkey|cd_type|cd_status|cd_start_time|cd_end_time|cd_create_userid|cd_create_ip|cd_modify_ip|cd_activated_time|cd_freezed_time|cd_destroyed_time|cd_rejected_time|gmt_create|gmt_modify|
+|96|2102000101900082|834276|1|5|1|1|1|1|1|1|1|1352882780|1|1352882780|1352882780|

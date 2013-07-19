@@ -1,0 +1,11 @@
+|connect|
+|clean table|card_info|
+
+|insert|card_info|
+|cd_id|cd_number|cd_cdkey|cd_type	|cd_status|cd_start_time|cd_end_time|cd_create_userid|cd_create_ip|cd_modify_ip|cd_activated_time|cd_freezed_time|cd_destroyed_time|cd_rejected_time|gmt_create|gmt_modify|
+|96|2102000101900082|834276|1|0|null|null|null|null|null|null|null|null|null|1352882780|1352882780|
+
+|clean table|card_type|
+|insert|card_type|
+|ct_id|ct_name|ct_service|ct_month	|ct_price|ct_charge|ct_is_refund|ct_is_renew|ct_is_upgrade|ct_is_present|ct_intro|ct_code|
+|1|百元卡（500块）|1001=1,1002=3|12|99999999.99|20.00|0|0|0|0|没有内容没有内容没有内容没有内容|0101|

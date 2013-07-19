@@ -1,0 +1,54 @@
+@charset "utf-8";
+/* CSS Document */
+/* cssreset */
+html , body{color:#000; height:100%;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+table{border-collapse:collapse;border-spacing:0}
+fieldset,img{border:0}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal}
+ol,ul{list-style:none}
+caption,th{text-align:left}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}
+q:before,q:after{content:''}
+abbr,acronym{border:0;font-variant:normal}
+sup{vertical-align:text-top}
+sub{vertical-align:text-bottom}
+*+html input,*+html textarea,*+html select{font-family:inherit;font-size:inherit;font-weight:inherit}
+* html input,* html textarea,* html select{font-size:100%}
+legend{color:#000}
+a:focus , input[type="button"][type="summit"]:focus {outline:thin dotted;}
+/* body */
+body{ background:url(../img/loginBg.jpg) 0 -87px repeat-x #04458f;}
+div.wraper{ width:100%; height:100%; background:url(../img/loginPoint.png) repeat;}
+/* content */
+div.header{ position:absolute; top:0; width:100%; height:56px; overflow:hidden; background:url(../img/loginBg.jpg) 0 0 repeat-x;}
+div.header_content{ width:1003px; height:56px; margin:0 auto;}
+div.logo{ float:left; width:210px; height:41px; margin:8px 0 0 0; background:url(../img/loginconBg.png) 0 0 no-repeat; cursor:pointer;}
+div.tel{ float:right; width:160px; height:25px; margin:17px 0 0 0;  background:url(../img/loginconBg.png) 0 -41px no-repeat;}
+div.content{ height:100%;}
+div.content table,div.content td{ height:100%;}
+div.content div.loginBox{ position:relative; width:568px; height:303px; margin:0 auto;}
+div.loginBox h2{ position:absolute; left:140px; top:0; width:255px; height:38px; background:url(../img/loginconBg.png) -211px 0 no-repeat; text-align:center; line-height:38px; font-size:20px; font-weight:bold; color:#fff; z-index:1;}
+div.login_top{ width:568px; height:10px; overflow:hidden; background:url(../img/loginconBg.png) 0 -82px no-repeat;}
+div.login{ width:568px; height:auto; overflow:hidden; padding:40px 0 0 0; background:#EAEAEA;}
+div.loginBox div.login div.loginModel {position:relative;width:320px;height:232px;margin:0 auto;letter-spacing:-0.31em;word-spacing:-0.43em;}
+div.loginBox div.loginModel p { position:relative; clear:both; width:320px; height:33px;  margin:0 0 17px 0; line-height:33px; overflow: visible;}
+div.loginBox div.loginModel p * {letter-spacing:normal; vertical-align:middle; word-spacing:normal;}
+div.loginBox div.loginModel label { width:70px; display:inline-block; font-family: "微软雅黑"; font-size:15px; font-weight:bold; line-height:33px; }
+div.loginBox div.loginModel div.warn { position:relative; width:317px; height:27px; line-height:27px; margin:0 0 15px 0; background:#FFE9C9; border:1px solid #FF7800; color:#FE7800; font-size:12px;letter-spacing:1px; /*visibility:hidden;*/}
+div.loginBox div.loginModel div.warnless { position:relative; width:317px; height:27px; line-height:27px; margin:0 0 15px 0; background:#FFE9C9; border:1px solid #FF7800; color:#FE7800; font-size:12px;letter-spacing:1px; visibility:hidden;}
+div.loginBox div.loginModel div.warn strong{ font-weight:bold; padding:0 0 0 8px;}
+div.loginBox div.loginModel input {width:239px;height:31px;line-height:31px;padding:0 2px 0 5px; border:1px solid #999999;letter-spacing: 1px; overflow: hidden;}
+div.loginBox div.loginModel input.check {width: 88px;}
+div.loginBox div.loginModel a {color:#FE7800; text-decoration:none; line-height:33px;}
+div.loginBox div.loginModel img{ width:85px; height:31px; margin:0 0 0 4px; border:1px solid #999999;}
+div.loginBox div.loginModel a.change{ display:inline-block; width:55px; height:33px; margin:0 0 0 4px; font-size:12px; line-height:16px; }
+div.loginBox div.loginModel a:hover {color:#009900;}
+div.loginBox div.loginModel p.btninc {width:313px; padding:0 0 0 17px; text-align:center;}
+div.loginBox div.loginModel p.btninc input {width:100px; height:37px; overflow:hidden; border:0 none; cursor:pointer; color:#000000; font-size:14px; line-height:37px;vertical-align:middle;}
+div.loginBox div.loginModel p.btninc input.sub{ margin:0 5px 0 0; background:url(../img/loginconBg.png) -213px -41px  no-repeat;}
+div.loginBox div.loginModel p.btninc input.btn{ background:url(../img/loginconBg.png) -318px -41px  no-repeat;}
+div.loginBox div.loginModel p.btninc input:hover{ color:#FE7800;}
+div.login_bottom{ width:568px; height:10px; overflow:hidden; background:url(../img/loginconBg.png) 0 -94px no-repeat;}
+div.footer{ position:fixed; bottom:0; width:100%; height:31px; overflow:hidden; background:url(../img/loginBg.jpg) 0 -56px repeat-x; color:#666; font-size:12px; line-height:31px; text-align:center;}
+

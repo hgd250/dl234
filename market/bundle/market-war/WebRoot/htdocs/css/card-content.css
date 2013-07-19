@@ -1,0 +1,88 @@
+@charset "utf-8";
+/* CSS Document */
+/* body */
+body{ background:#edf2f8; padding-bottom:40px;}
+/* content */
+div.header{ width:100%; height:68px; overflow:hidden; background:url(../img/contentBg.jpg) 0 0 repeat-x; }
+div.header div.logo{ width:225px; height:52px; margin:10px 0 0 15px;  background:url(../img/loginconBg.png) 0 -105px no-repeat; cursor:pointer;}
+div.nav{ margin-bottom:1px; width:100%; height:28px; overflow:hidden; border-top:2px solid #DEE4ED; background:url(../img/contentBg.jpg) 0 -68px repeat-x;}
+div.nav ul{ margin:0 0 0 100px;}
+div.nav ul li{ float:left; padding:0 0 0 2px; background:url(../img/navline.jpg) left no-repeat; font-size:12px; font-weight:bold; line-height:28px;}
+div.nav ul li:first-child{ background:none; padding:0;}
+div.nav ul li a{ display:block; padding:0 20px; color:#333333; text-decoration:none;}
+div.nav ul li a:hover{ background:#d7dce4; color:#01458b;}
+div.content{ width:100%; height:auto; overflow:hidden;}
+div.content div.subnav{ height:35px; background:url(../img/contentBg.jpg) 0 -96px repeat-x; }
+div.content div.subContent{display:block !important;display:inline-block;height:auto; overflow:hidden; margin:0 25px; border:1px solid #a7afba; background:#FFF;}
+div.content div.tabs{ height:29px; overflow:hidden; background:url(../img/contentBg.jpg) 0 -131px; letter-spacing:-0.31em; word-spacing:-0.43em;}
+div.content div.tabs ul{ margin:4px 0 0 0;}
+div.content div.tabs ul li{ float:left; height:24px; display:inline-block; margin:0 0 0 10px; padding:0 20px; border:1px solid #bbbcc0; border-top-left-radius:5px; border-top-right-radius:5px; border-bottom:0 none; background:url(../img/contentBg.jpg) 0 -208px repeat-x; font-size:12px; font-weight:bold; line-height:24px; text-align:center; letter-spacing:normal; word-spacing:normal; }
+/*cardmsg开始 */
+div.content div.list,div.content div.cardmsg{ display:block !important; display:inline-block; margin:19px 7px; height:auto; overflow:hidden; border:1px solid #98A1AA;}
+div.contion{ display:block !important; display:inline-block; margin:10px auto; height:auto; text-align:left;word-spacing:-0.43em; word-break:break-all;}
+div.contion span{ display:inline-block; word-spacing:normal; margin:0 10px; height:28px; line-height:28px; vertical-align:middle; overflow:hidden;}
+div.contion label,div.msgbox label{ margin:0 8px; display:inline-block; font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#636363;line-height:28px; text-align:right; vertical-align:top;}
+input.txt{ width:187px; height:24px; line-height:24px; border:1px solid #939393;}
+div.contion select,div.msgbox select{ width:187px; height:24px; color:#000000; font-size:14px; text-decoration:none; border:1px solid #939393;}
+div.contion input.surebtn{ margin:0 0 0 20px; width:54px; height:26px; color:#fff; border:0 none; line-height:26px; background:url(../img/surebtn.png) no-repeat; cursor:pointer;}
+*+html div.contion input.surebtn{ margin-top:1px;}
+* html div.contion input.surebtn{ margin-top:1px;}
+/* cardmsg结束 */
+div.daochu span.daochubg{ float:left; height:26px; background:url(../img/daochubtn.png) no-repeat top right; text-decoration:none; padding-right:10px;}
+div.daochu{  margin:19px 0 10px 7px; height:26px;}
+div.daochu input.daochubtn{ float:left; padding:0 0 0 10px; height:26px; color:#fff; border:0 none; line-height:26px; background:url(../img/daochubtn.png) no-repeat top left; cursor:pointer;}
+div.content div.list{ margin:10px 7px;}
+div.content div.list table{ position:relative; width:100%; border-collapse:inherit; line-height:30px; color:#333333;}
+div.list table th,div.list table td{ border-right:1px solid #E0E0E0; text-align:center; font-size:12px; white-space:nowrap; word-break:keep-all;}
+div.list table th{ background:url(../img/contentBg.jpg) 0 -232px repeat-x;}
+div.list table tr.evens td { background:#E1EBF7;}
+div.list table tr:nth-child(even) td { background:#E1EBF7;}
+div.list table td a{ color:#01458B; text-decoration:none;}
+div.list table td a:hover{ text-decoration:underline;}
+/*table结束*/
+/*翻页开始*/
+div.content div.pagination{ margin:5px auto; width:100%; overflow:hidden; height:32px; line-height:32px; font-size:0;letter-spacing:-0.31em; background:#fff; text-align:center; white-space:nowrap;}
+div.pagination a , div.pagination strong , div.pagination span , div.pagination b{ vertical-align:middle;display:inline-block; position:relative; margin:0 3px; padding:0 10px; line-height:24px; vertical-align:middle; background:url(../img/contentBg.jpg) 0 -162px repeat-x; border:1px solid #c4c4c4; color:#494949; font-size:12px; font-weight:bold; letter-spacing:0; word-spacing:0; text-decoration:none;}
+div.pagination strong{border:1px solid #b1b1b1; background:url(../img/contentBg.jpg) 0 -184px repeat-x; color:#000; font-size:14px;}
+div.pagination strong.unclick{ background:url(../img/contentBg.jpg) 0 -162px repeat-x; color:#a8a8a8;}
+div.pagination a:hover,.popupPagination{background:url(../img/contentBg.jpg) 0 -184px repeat-x;}
+div.pagination b{  padding:0 5px; margin-top:-2px; background:none; border:none; color:#000;}
+*+html div.pagination b{margin-top:0;}
+* html div.pagination b{margin-top:-5px;}
+div.pagination span{ background:none; border:0; letter-spacing:1px; height:28px;}
+div.pagination span *{vertical-align:middle; font-family:Tahoma, Geneva, sans-serif}
+div.pagination input.button{ width:54px; height:26px; border:0 none; background:url(../img/surebtn.png) no-repeat; line-height:26px; color:#fff; cursor:pointer;}
+* html div.pagination input.button{ line-height:22px; margin-top:-2px;}
+/*sentcard*/
+div.msgbox{ display:block !important; display:inline-block; margin:40px auto 20px; width:950px; height:auto; text-align:left;word-spacing:-0.43em;}
+div.msgbox p{ margin:0 0 8px 0;}
+div.msgbox p label.labelwidth{ width:70px;}
+div.msgbox input.surebtn{margin:25px 0 0 85px; width:54px; height:26px; color:#fff; border:0 none; line-height:26px; background:url(../img/surebtn.png) no-repeat; cursor:pointer;}
+div.msgbox input.back{ margin-left:20px; cursor:pointer;}
+/*注销健康卡*/
+div.msgbox input.scan{ margin:1px 0 0 20px; background:url(../img/btnBroswer.png) no-repeat;}
+/*发卡成功或失败、健康卡注销*/
+div.statusbox{ margin:37px auto; width:854px; height:auto; overflow:hidden; text-align:left; word-spacing:-0.43em;}
+div.succeedimg,div.failimg{ float:left; width:103px; height:80px; overflow:hidden; background:url(../img/statusBg.jpg) 0 0 no-repeat;}
+div.failimg{ background:url(../img/statusBg.jpg) 0 -80px no-repeat;}
+div.statusmsg{ float:left; margin-left:30px; width:720px;}
+div.statusmsg p{ font-size:14px; color:#676767; line-height:25px; word-break:break-all;}
+div.statusmsg p.status{ margin-bottom:15px; font-size:18px; color:#FE7800; font-weight:bold;}
+div.statusmsg p strong{ margin:0 5px; font-weight:bold; color:#636363;}
+div.statusmsg p a{ color:#01458B; font-size:14px; font-weight:bold;}
+/*健康卡基本信息*/
+div.msgtitle{ margin:1px; padding:0 0 0 20px; height:30px; font-size:12px; font-weight:bold; line-height:30px; background:#E7E6FA;}
+div.cardmsglist,div.usermsg{margin:15px auto; width:945px; height:auto; overflow:hidden;}
+div.cardbox{ float:left; margin:0 0 0 30px; width:285px; height:auto; font-size:14px; color:#636363;}
+div.img{ margin:0; height:165px; background:url(../img/card.jpg) no-repeat;}
+div.centerbox{ padding:0 30px 0 0; width:274px; border-right:1px solid #DADDE0;}
+div.cardbox table{ border-collapse:inherit; line-height:25px;}
+div.cardbox table td:first-child{ width:50%; vertical-align:top;}
+div.cardbox table td{ vertical-align:bottom;}
+div.centerbox table td:first-child{ text-align:right; }
+div.cardbox table th,div.cardbox table td{ text-align:left;}
+div.usermsg table.user{ width:100%; border:1px solid #CCCCCC; color:#636363; font-size:14px; line-height:49px;}
+div.usermsg table.user td{ border:1px solid #CCCCCC; text-align:center;}
+/* footer开始 */
+div.footer{ position:fixed; bottom:0; width:100%; height:40px; background:#026ebd; color:#FFF; font-size:12px; line-height:40px; text-align:center;}
+/* footer结束 */

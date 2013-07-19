@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>欢迎</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="0" />
+</head>
+<title>海云健康管理服务平台</title>
+<link rel="shortcut icon" href="htdocs/img/my120.ico" />
+<link rel="stylesheet" type="text/css" href="htdocs/css/card-base.css"/>
+<link rel="stylesheet" type="text/css" href="htdocs/css/card-content.css" />
+<script type="text/javascript" src="htdocs/javascript/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="htdocs/javascript/jquery.pagination.js"></script>
+<script type="text/javascript" src="htdocs/javascript/jquery.template.js"></script>
+<script type="text/javascript" src="htdocs/javascript/jquery.validator.js"></script>
+<script type="text/javascript" src="htdocs/javascript/public.page.js"></script>
+<script type="text/javascript" src="htdocs/javascript/datePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="htdocs/javascript/manageMent.js"></script>
+<script type="text/javascript">
+var AjaxPageRequest = "doSearchCardInfoList.html";
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".dataList").on("click", 'a.detail', function(){
+		$("#numberHidden").val($(this).parents("tr").find("td[lang=number]").html());
+		$("#detailForm").submit();
+	});
+	$("#exportExcel").on("click", function(){
+		$("#excelForm").find("input[name=number]").val($(".searchForm").find("input[name=number]").val());
+		$("#excelForm").find("input[name=type]").val($(".searchForm").find("select[name=type]").val());
+		$("#excelForm").find("input[name=cityCode]").val($(".searchForm").find("select[name=cityCode]").val());
+		$("#excelForm").find("input[name=status]").val($(".searchForm").find("select[name=status]").val());
+		$("#excelForm").find("input[name=startTime]").val($(".searchForm").find("input[name=startTime]").val());
+		$("#excelForm").find("input[name=endTime]").val($(".searchForm").find("input[name=endTime]").val());
+		$("#excelForm").find("input[name=createUserId]").val($(".searchForm").find("input[name=createUserId]").val());
+		$("#excelForm").submit();
+	});
+});
+</script>
+<body>
+<form method="post" action="doCardInfo.html" id="detailForm">
+<input type="hidden" name="number" id="numberHidden"  />
+</form>
+<div class="header">
+    <div class="logo">
+        <a href="javascript:;"><img src="htdocs/img/space.gif" alt="海云健康管理服务平台" title="海云健康管理服务平台" /></a>
+    </div>
+</div>
+<div class="nav">
+    <ul>
+       <li><a href="toCreateCard.html">发行健康卡</a></li>
+        <li><a href="toSearchCardInfoList.html">健康卡管理</a></li>
+        <li><a href="doCancelCard.html">注销健康卡</a></li>
+        <li><a href="toModifyPassword.html">修改密码</a></li>
+        <li><a href="logout.html">退出</a></li>
+    </ul>
+</div>
+<div class="content">
+    <div class="subnav"></div>
+    <div class="subContent">
+        <div class="tabs">
+            <ul>
+               <li>健康卡管理</li>
+            </ul>
+        </div>
+        <div class="cardmsg">
+            <div class="contion">
+            <form class='searchForm'>
+              <span><label>健康卡号</label><input type="text" name="number" class="txt" /></span>
+              <span><label>健康卡类型</label>
+              <select name="type" class="cardselect">
+              <option value="">全部</option>
+				#foreach ($!cardType in $!cardTypeList )
+   				<option value ="$!cardType.id">$!cardType.name</option>
+  				#end
+              </select></span>
+              <span><label>发行城市</label>
+              <select id="cityCode" name="cityCode" class="cardselect">
+              <option value="" selected="selected">全部</option>
+              <option value="210200">大连市</option>
+              <option value="210100">沈阳市</option>
+              </select></span>
+              <span><label>使用状态</label>
+              <select id="status" name="status" class="cardselect">
+              <option value="">全部</option>
+              <option value="0">未激活</option>
+              <option value="1">已激活</option>
+              <option value="2">已冻结</option>
+              <option value="3">已到期</option>
+              <option value="4">已退卡</option>
+              <option value="5">已注销</option>
+              </select></span>
+              <span><label>发卡时间</label><input type="text" readonly="readonly" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'endTime\');}'})" name="startTime" id="startTime" class="txt" />-<input type="text" readonly="readonly" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'%y-%M-%d',minDate:'#F{$dp.$D(\'startTime\');}'})" id="endTime" name="endTime" class="txt" /></span>
+              <span><label>发卡人</label><input type="text" name="createUserId" class="txt" /></span>
+              <span><input type="submit" class="search surebtn" value="搜索" /></span>
+               </form>
+            </div>
+            
+        </div>
+        <div class="daochu">
+        <form id='excelForm' method="post" action="doExcel.html">
+        	<input type="hidden" name="number" class="txt" />
+        	<input type="hidden" name="type" class="txt" />
+        	<input type="hidden" name="cityCode" class="txt" />
+        	<input type="hidden" name="status" class="txt" />
+        	<input type="hidden" name="startTime" class="txt" />
+        	<input type="hidden" name="endTime" class="txt" />
+        	<input type="hidden" name="createUserId" class="txt" />
+           	<input type="button" class="daochubtn" id="exportExcel" value="导出文件" /><span class="daochubg"></span>
+        </form>
+        </div>
+        <div class="list pageContent">
+        <div class="subContent list">
+          <table  width="100%" border="0" cellspacing="0" cellpadding="0" class="list_con">
+                     <thead>
+                         <tr>
+                             <th>健康卡号</th>
+                             <th>健康卡类型</th>
+                             <th>价格</th>
+                             <th>发行城市</th>
+                             <th>使用状态</th>
+                             <th>发卡时间</th>
+                             <th>IP地址</th>
+                             <th>发卡人</th>
+                             <th>操作</th>
+                         </tr>
+                     </thead>
+                     <tbody class="dataList">
+                         <tr class="example" style="display:none;">
+                             <td lang="number"></td>
+                             <td lang="cardTypeName"></td>
+                             <td lang="cardPrice"></td>
+                             <td lang="cityName"></td>
+                             <td lang="status"></td>
+                             <td lang="gmtCreate"></td>
+                             <td lang="createIp"></td>
+                             <td lang="createUserId"></td>
+                             <td><a href="javascript:;" onclick="return false;" class="detail">查看</a></td>
+                         </tr>
+                     </tbody>
+                    </table>
+        </div>
+         <div class="pagination">
+         </div>
+         </div>
+    </div>
+</div>
+<div class="footer" id="footer">辽卫网审字[2011]第64号　ICP备11000780号 增值电信业务经营许可证辽B-2-4-20110182</div>
+</body>
+</html>

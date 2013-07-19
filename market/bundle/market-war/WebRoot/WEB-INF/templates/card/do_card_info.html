@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>欢迎</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="0" />
+</head>
+<title>海云健康管理服务平台</title>
+<link rel="shortcut icon" href="htdocs/img/my120.ico" />
+<link rel="stylesheet" type="text/css" href="htdocs/css/card-base.css"/>
+<link rel="stylesheet" type="text/css" href="htdocs/css/card-content.css" />
+<script type="text/javascript" src="htdocs/javascript/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="htdocs/javascript/jquery.pagination.js"></script>
+<script type="text/javascript" src="htdocs/javascript/jquery.template.js"></script>
+<script type="text/javascript" src="htdocs/javascript/jquery.validator.js"></script>
+<script type="text/javascript" src="htdocs/javascript/public.page.js"></script>
+<script type="text/javascript">
+var AjaxPageRequest = "doSearchCardInfoList.html";
+</script>
+<body>
+
+<div class="header">
+    <div class="logo">
+        <a href="javascript:;"><img src="htdocs/img/space.gif" alt="海云健康管理服务平台" title="海云健康管理服务平台" /></a>
+    </div>
+</div>
+<div class="nav">
+    <ul>
+       	<li><a href="toCreateCard.html">发行健康卡</a></li>
+        <li><a href="toSearchCardInfoList.html">健康卡管理</a></li>
+        <li><a href="doCancelCard.html">注销健康卡</a></li>
+        <li><a href="toModifyPassword.html">修改密码</a></li>
+        <li><a href="logout.html">退出</a></li>
+    </ul>
+</div>
+<div class="content">
+    <div class="subnav"></div>
+    <div class="subContent">
+        <div class="tabs">
+            <ul>
+               <li>健康卡管理-详细</li>
+            </ul>
+        </div>
+        <div class="cardmsg">
+          <div class="msgtitle">健康卡基本信息</div>
+          <div class="cardmsglist">
+             <div class="cardbox img"><a href="javascript:;"><img src="htdocs/img/card.jpg" width="285" height="165" alt="健康卡" /></a></div>
+             <div class="cardbox centerbox">
+                <table border="0" cellspacing="0" cellpadding="0">
+                   <tr><td >健康卡号：</td><td> ${data.number}</td></tr>
+                   <tr><td>健康卡类型：</td><td> ${data.cardTypeName}</td></tr>
+                    <tr><td>价格：</td><td> ${data.cardPrice}</td></tr>
+                    <tr><td>发行城市：</td><td>${data.cityName}</td></tr>
+                    <tr><td>使用状态：</td><td> ${data.status}</td></tr>
+                    #if (${data.statusFlag}=='0') 
+                    <tr><td>发卡日期：</td><td> ${data.gmtCreate}</td></tr>
+                    #else
+		  			#end
+		  			#if (${data.statusFlag}=='1'||${data.statusFlag}=='3') 
+                    <tr><td>激活日期：</td><td> ${data.activatedTime}</td></tr>
+                    <tr><td>到期日期：</td><td> ${data.serviceEndTime}</td></tr>
+                    #else
+		  			#end
+		  			#if (${data.statusFlag}=='2') 
+                    <tr><td>冻结日期：</td><td> ${data.freezedTime}</td></tr>
+                     #else
+		  			#end
+		  			#if (${data.statusFlag}=='5') 
+                    <tr><td>注销日期：</td><td> ${data.destroyedTime}</td></tr>
+                     #else
+		  			#end
+		  			#if (${data.statusFlag}=='4') 
+                    <tr><td>退卡日期：</td><td> ${data.rejectedTime}</td></tr>
+                     #else
+		  			#end
+               </table>
+             </div>
+             <div class="cardbox">
+                <table border="0" cellspacing="0" cellpadding="0">
+                   <tr><th>服务项目</th></tr>
+                   <tr><td><div style="height:120px; overflow-y:scroll; border:1px solid;">${data.intro}</div></td></tr>
+                </table>
+             </div>
+          </div> 
+          </div>
+          #if (${data.userName}!='') 
+          <div class="cardmsg">
+            <div class="msgtitle">用户基本信息</div>
+            <div class="usermsg">
+               <table class="user">
+                 <tr>
+                 <td>用户名： ${data.userName}</td>
+                 <td>姓名： ${data.patientName}</td>
+                 <td>性别：${data.sex}</td>
+                 <td>年龄： ${data.age}</td>
+                 <td>身份证号：${data.idNumber}</td>
+                 </tr>
+                 <tr>
+                 <td>联系电话： ${data.phone}</td>
+                 <td>电子邮件： ${data.email}</td>
+                 <td colspan="3">现住址： ${data.piLocationDetail}</td>
+                 </tr>
+               </table>
+            </div>
+          </div>
+          #else
+		  #end 
+		  <form action="toSearchCardInfoList.html" method="post">
+		  <center>
+      <input type="submit" value="返回" id="goBack"/>
+      </center>
+      </form>
+    </div>
+</div>
+<div class="footer" id="footer">辽卫网审字[2011]第64号　ICP备11000780号 增值电信业务经营许可证辽B-2-4-20110182</div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+|connect|
+|query|select cd_number,cd_cdkey,cd_status from card_info|
+|cd_number|cd_status|
+|2102000101000001|0|
+

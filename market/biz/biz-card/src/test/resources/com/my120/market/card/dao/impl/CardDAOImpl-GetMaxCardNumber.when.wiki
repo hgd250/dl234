@@ -1,0 +1,9 @@
+|connect|
+|clean table|card_info|
+
+|insert|card_info|
+|cd_id|cd_number|cd_cdkey|cd_type|cd_status|cd_start_time|cd_end_time|cd_create_userid|cd_create_ip|cd_modify_ip|gmt_create|gmt_modify|
+|1|2102000101000002|123456|1|0|1|1|250|192.168.0.2|1|1|1|
+|2|2102000101000009|123456|1|0|1|1|250|192.168.0.2|1|1|1|
+
+

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="card">
+
+	<typeAlias alias="cardModel" type="com.my120.market.model.CardQueryModel" />
+	<insert id="insertCard" parameterClass="cardModel">
+		INSERT INTO
+		card_info(cd_number,cd_cdkey,cd_type,cd_status,cd_start_time,cd_end_time,cd_create_userid,cd_create_ip,cd_modify_ip,gmt_create,gmt_modify)
+		VALUES(#number#,100000 +FLOOR(900000*RAND()),#type#,0,#startTime#,#endTime#,#createUserId#,#createIp#,#modifyIp#,#gmtCreate#,#gmtCreate# ) 
+	 </insert>
+
+
+	<select id="getMaxCardNumber" parameterClass="cardModel"
+		resultClass="java.lang.String">
+		<![CDATA[
+		select MAX(cd_number) from card_info where cd_number > concat(#cardPrefix#,'000000')
+				and cd_number <= concat(#cardPrefix#,'999999')	
+		]]>
+	</select>
+	
+	<!-- 查询健康卡信息 -->
+	<select id="selectCardInfoList" parameterClass="java.util.HashMap" resultClass="cardModel">
+	SELECT
+		ci.cd_id as id,
+		ci.cd_number as number,
+		ct.ct_name as cardTypeName,
+		ct.ct_price as cardPrice,
+		ci.cd_status as status,
+		ci.gmt_create as gmtCreate,
+		ci.cd_create_ip as createIp,
+		ci.cd_cdkey as cdkey,
+		ci.cd_create_userid as createUserId
+	FROM
+		card_info ci 
+	LEFT JOIN card_type ct 
+	ON ci.cd_type = ct.ct_id
+	WHERE
+		1=1
+		<isNotEmpty property="number" prepend="AND">
+			ci.cd_number like '%$number$%'
+		</isNotEmpty>
+		<isNotEmpty property="type" prepend="AND">
+			ct.ct_id = #type#
+		</isNotEmpty>
+		<isNotEmpty property="cityCode" prepend="AND">
+			ci.cd_number like '$cityCode$%'
+		</isNotEmpty>
+		<isNotEmpty property="createUserId" prepend="AND">
+			ci.cd_create_userid like '$createUserId$%'
+		</isNotEmpty>
+		<isNotEmpty property="status" prepend="AND">
+			ci.cd_status = #status#
+		</isNotEmpty>
+		<isNotEmpty property="startTime" prepend="AND">
+	   			<![CDATA[
+					(ci.gmt_create >= #startTime#)
+				]]>
+   		</isNotEmpty>
+   		<isNotEmpty property="endTime" prepend="AND">
+   			<![CDATA[
+				(ci.gmt_create <= #endTime#)
+			]]>
+   		</isNotEmpty>
+   		<isNotEmpty property="gmtCreate" prepend="AND">
+   			<![CDATA[
+				(ci.gmt_create = #gmtCreate#)
+			]]>
+   		</isNotEmpty>
+   		order by ci.gmt_create desc
+		<isNotEmpty property="isLimit">
+		  	limit #start#,#end#
+		</isNotEmpty>
+	</select>
+	<!-- 查询健康卡数量-->
+	<select id="selectCardInfoCount" parameterClass="java.util.HashMap" resultClass="java.lang.Integer">
+	SELECT
+		count(1)
+		FROM
+		card_info ci 
+	LEFT JOIN card_type ct 
+	ON ci.cd_type = ct.ct_id
+	WHERE
+		1=1
+		<isNotEmpty property="number" prepend="AND">
+			ci.cd_number like '%$number$%'
+		</isNotEmpty>
+		<isNotEmpty property="createUserId" prepend="AND">
+			ci.cd_create_userid like '$createUserId$%'
+		</isNotEmpty>
+		<isNotEmpty property="type" prepend="AND">
+			ct.ct_id = #type#
+		</isNotEmpty>
+		<isNotEmpty property="cityCode" prepend="AND">
+			ci.cd_number like '$cityCode$%'
+		</isNotEmpty>
+		<isNotEmpty property="status" prepend="AND">
+			ci.cd_status = #status#
+		</isNotEmpty>
+		<isNotEmpty property="startTime" prepend="AND">
+	   			<![CDATA[
+					(ci.gmt_create >= #startTime#)
+				]]>
+   		</isNotEmpty>
+   		<isNotEmpty property="endTime" prepend="AND">
+   			<![CDATA[
+				(ci.gmt_create <= #endTime#)
+			]]>
+   		</isNotEmpty>
+	</select>
+	<!-- 根据卡号查询卡信息 -->
+	<select id="selectCardInfoByCardNumber" resultClass="cardModel">
+	SELECT
+		ci.cd_id as id,
+	  	ci.cd_number as number,
+		ci.cd_status as status,
+		ci.gmt_create as gmtCreate,
+		ci.cd_activated_time as activatedTime,
+		ci.cd_freezed_time as freezedTime,
+		ci.cd_destroyed_time as destroyedTime,
+		ci.cd_rejected_time as rejectedTime,
+		ci.cd_end_time as serviceEndTime,
+	
+		ct.ct_name as cardTypeName,
+		ct.ct_price as cardPrice,
+		ct.ct_intro as intro,
+	 
+		u.u_name as userName,
+	
+		pi.pi_name as patientName,
+		pi.pi_sex as sex,
+		YEAR(NOW())-pi.pi_year as age,
+		pi.pi_idnumber as idNumber,
+		pi.pi_phone as phone,
+		pi.pi_email as email,
+		pi.pi_location_detail as piLocationDetail,
+	
+		r.r_province_name as provinceName,
+		r.r_city_name as cityName,
+		r.r_district_name as districtName,
+		r.r_town_name as townName,
+		r.r_village_name as villageName
+	FROM
+ 		card_info ci 
+	LEFT JOIN card_type ct
+	ON ci.cd_type = ct.ct_id
+	LEFT JOIN card_user_relation cur 
+	ON ci.cd_id = cur.cur_cardid
+	LEFT JOIN user u
+	ON cur.cur_userid = u.u_id
+	LEFT JOIN patient_info pi 
+	ON u.u_id = pi.pi_userid
+	LEFT JOIN  region r 
+	ON pi.pi_location_code=r.r_code and r.r_flag=1
+	WHERE 
+	ci.cd_number = #number#
+	</select>
+
+	<update id="updateCard" parameterClass="cardModel">
+		UPDATE
+		card_info
+		SET
+		cd_id = #id#
+		<isNotNull prepend="," property="number">
+			cd_number = #number#
+		</isNotNull>
+		<isNotNull prepend="," property="cdkey">
+			cd_cdkey = #cdkey#
+		</isNotNull>
+		<isNotNull prepend="," property="status">
+			cd_status = #status#
+		</isNotNull>
+		<isNotNull prepend="," property="startTime">
+			cd_start_time = #startTime#
+		</isNotNull>
+		<isNotNull prepend="," property="endTime">
+			cd_end_time = #endTime#
+		</isNotNull>
+		<isNotNull prepend="," property="createUserId">
+			cd_create_userid = #createUserid#
+		</isNotNull>
+		<isNotNull prepend="," property="createIp">
+			cd_create_ip = #createIp#
+		</isNotNull>
+		<isNotNull prepend="," property="modifyIp">
+			cd_modify_ip = #modifyIp#
+		</isNotNull>
+		<isNotNull prepend="," property="gmtCreate">
+			gmt_create = #gmtCreate#
+		</isNotNull>
+		<isNotNull prepend="," property="gmtModify">
+			gmt_modify = #gmtModify#
+		</isNotNull>
+		<isNotNull prepend="," property="activatedTime">
+			cd_activated_time = #activatedTime#
+		</isNotNull>
+		<isNotNull prepend="," property="freezedTime">
+			cd_freezed_time = #freezedTime#
+		</isNotNull>
+		<isNotNull prepend="," property="destroyedTime">
+			cd_destroyed_time = #destroyedTime#
+		</isNotNull>
+		<isNotNull prepend="," property="rejectedTime">
+			cd_rejected_time = #rejectedTime#
+		</isNotNull>
+		WHERE
+		cd_id = #id#
+	</update>
+
+	<update id="cancelCard" parameterClass="cardModel">
+		UPDATE
+			card_info
+		SET
+			cd_status = #status#,
+			cd_destroyed_time = #destroyedTime#,
+			gmt_modify = #gmtModify#
+		WHERE
+			cd_number = #number#
+		AND
+			cd_status = 0
+	</update>
+</sqlMap>

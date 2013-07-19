@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>海云健康管理服务平台</title>
+<link rel="shortcut icon" href="htdocs/img/my120.ico" />
+<link rel="stylesheet" type="text/css" href="htdocs/css/card-base.css"/>
+<link rel="stylesheet" type="text/css" href="htdocs/css/card-content.css" />
+<script type="text/javascript" src="script/IE6CssHack.js"></script>
+<!--[if IE 6]>
+<script src="script/DD_belatedPNG_0.0.8a.js"></script>
+<script>DD_belatedPNG.fix('*');</script>
+<script></script>
+<![endif]-->
+<script src="htdocs/javascript/jquery-1.7.1.min.js"></script>
+<script src="htdocs/javascript/jquery.validator.js"></script>
+<script>
+	var validFunc = {
+		normal:function(text){
+		},
+		focus:function(text){
+		},
+		wrong:function(text){
+			this.next().length ? this.next().html(text) : this.after('<span>'+text+'</span>')
+		},
+		right:function(text){
+			this.nextAll().remove();
+		}
+	};
+	$(function(){
+		$['validType']['password'] = {
+			required:'请输入!',
+			bind:{
+				blur:['length(6,12)']
+			},
+			text:['密码长度不对！']
+		};
+		$['validType']['newpwd'] = {
+			required:'请输入!',
+			bind:{
+				blur:['length(6,12)', 'invalidChar(^[0-9a-zA-Z]*$)']
+			},
+			text:['密码长度为6-12个字符!','密码只能由字母数字组成!']
+		};
+		$['validType']['repeat'] = {
+			required:'请输入!',
+			bind:{
+				blur:['length(6,12)', 'equal(#newpwd)']
+			},
+			text:['密码长度为6-12个字符!', '两次密码输入不一致!']
+		};
+		
+		$('#modifyPassword').validator(validFunc);
+	});
+	
+    function validate(){
+			    var obj1= document.getElementById("oldPassWord");
+		 		if(obj1.value=="" || obj1.value.length>12 ||obj1.value.length < 6){
+		 			return false;
+		 		}
+		 		if(!/^[0-9a-zA-Z]*$/.test(obj1.value)){
+			        return false;
+			     }
+			 		
+		 		var obj2= document.getElementById("newpwd");
+		 		if(obj2.value=="" || obj2.value.length>12 ||obj2.value.length < 6){
+		 			return false;
+		 		}
+		 		
+		 	    if(!/^[0-9a-zA-Z]*$/.test(obj2.value)){
+		            return false;
+		        }
+
+		 	    var obj3= document.getElementById("newPassWord2");
+		 		if(obj3.value=="" || obj3.value.length>12 ||obj3.value.length < 6){
+		 			return false;
+		 		}
+
+			    if(!/^[0-9a-zA-Z]*$/.test(obj3.value)){
+		  	      return false;
+		        }
+
+				if(obj3.value != obj2.value){
+		 			return false;
+	     		}
+		  		return true;
+	}
+</script>
+</head>
+
+<body>
+<div class="header">
+    <div class="logo">
+        <a href="javascript:;"><img src="htdocs/img/space.gif" alt="海云健康管理服务平台" title="海云健康管理服务平台" /></a>
+    </div>
+</div>
+<div class="nav">
+    <ul>
+       <li><a href="toCreateCard.html">发行健康卡</a></li>
+        <li><a href="toSearchCardInfoList.html">健康卡管理</a></li>
+        <li><a href="doCancelCard.html">注销健康卡</a></li>
+        <li><a href="toModifyPassword.html">修改密码</a></li>
+        <li><a href="logout.html">退出</a></li>
+        
+    </ul>
+</div>
+<div class="content">
+    <div class="subnav"></div>
+    <div class="subContent">
+        <div class="tabs">
+            <ul>
+               <li>修改密码</li>
+            </ul>
+        </div>
+        <div class="cardmsg">
+	        <div class="statusbox">
+	        	<div class="login">
+                <form id="modifyPassword" action="modifyPassword.html" method="post">
+                    <div class="loginModel">
+                        <p><label>输入旧密码：</label><input type="password" class="validator(password)" maxlength="35" id="oldPassWord" name="oldPassWord" /></p>
+                        <p><label>设置新密码：</label><input type="password" id="newpwd" class="validator(newpwd)" maxlength="35" name="newPassWord" /></p>
+                        <p><label>确认新密码：</label><input type="password" class="validator(repeat)" maxlength="35" id="newPassWord2" name="newPassWord2" /></p>
+             						<p><input type="submit" class="surebtn" onclick="return validate()" value="确定" /></p>
+                    </div>
+                </form>
+            </div>
+	        </div>
+       </div>
+    </div>
+</div>
+<div class="footer" id="footer">辽卫网审字[2011]第64号　ICP备11000780号 增值电信业务经营许可证辽B-2-4-20110182</div>
+</body>
+</html>
